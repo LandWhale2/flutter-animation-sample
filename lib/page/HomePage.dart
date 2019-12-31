@@ -1,6 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutterui2/page/animation.dart';
+import 'package:flutterui2/widget/FadeRoute.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -47,7 +50,31 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            SizedBox(height: 300,),
+            SizedBox(height: 100,),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Container(
+                    width: 150,
+                    height: 150,
+                    child: FadeInImage.assetNetwork(
+                        placeholder: 'https://elysator.com/wp-content/uploads/blank-profile-picture-973460_1280-e1523978675847.png',
+                        fadeInCurve: Curves.fastOutSlowIn,
+                        image: 'http://newsroom.etomato.com/userfiles/181214hiteeyrrin.jpg'),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.play_circle_filled,size: 40,),
+                    onPressed: (){
+                      setState(() {
+                        Navigator.push(context, CustomRoute(builder: (_)=>SecondPage()));
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 100,),
             AnimatedContainer(
               width: _width,
               height: _height,
@@ -81,4 +108,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-//http://newsroom.etomato.com/userfiles/181214hiteeyrrin.jpg
